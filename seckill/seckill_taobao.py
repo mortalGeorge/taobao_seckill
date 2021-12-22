@@ -31,7 +31,8 @@ def default_chrome_path():
     driver_dir = getattr(utils_settings, "DRIVER_DIR", None)
     if platform.system() == "Windows":
         if driver_dir:
-            return os.path.abspath(os.path.join(driver_dir, "chromedriver.exe"))
+            # return os.path.abspath(os.path.join(driver_dir, "chromedriver.exe"))
+            return os.path.abspath(driver_dir)
 
         raise Exception("The chromedriver drive path attribute is not found.")
     else:
