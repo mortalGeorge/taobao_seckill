@@ -118,8 +118,8 @@ class ChromeDrive:
             current_time = datetime.now()
             if (self.seckill_time_obj - current_time).seconds > 180:
                 self.driver.get("https://cart.taobao.com/cart.htm")
-                print("每分钟刷新一次界面，防止登录超时...")
-                sleep(60)
+                print("每30s刷新一次界面，防止登录超时...")
+                sleep(30)
             else:
                 self.get_cookie()
                 print("抢购时间点将近，停止自动刷新，准备进入抢购阶段...")
@@ -127,7 +127,6 @@ class ChromeDrive:
 
 
     def sec_kill(self):
-        self.keep_wait()
         self.driver.get("https://cart.taobao.com/cart.htm")
         sleep(1)
 
@@ -151,32 +150,44 @@ class ChromeDrive:
 
                 retry_count += 1
 
-                try:
+                if retry_count > 1:
+                    self.driver.get("https://cart.taobao.com/cart.htm")
+                    sleep(0.01)
+                    if self.driver.find_element_by_id("J_SelectAll1"):
+                        self.driver.find_element_by_id("J_SelectAll1").click()
+                        # print("已经选中全部商品！！！")
 
+                try:
+                    sleep(0.001)
                     if self.driver.find_element_by_id("J_Go"):
                         self.driver.find_element_by_id("J_Go").click()
                         print("已经点击结算按钮...")
                         click_submit_times = 0
+                        sleep(0.01)
                         while True:
                             try:
-                                if click_submit_times < 10:
+                                if click_submit_times < 30:
                                     self.driver.find_element_by_link_text('提交订单').click()
                                     print("已经点击提交订单按钮")
                                     submit_succ = True
                                     break
                                 else:
                                     print("提交订单失败...")
+                                    break
                             except Exception as e:
-
                                 print("没发现提交按钮, 页面未加载, 重试...")
+                                if self.driver.find_element_by_id("J_Go"):
+                                    self.driver.find_element_by_id("J_Go").click()
                                 click_submit_times = click_submit_times + 1
-                                sleep(0.1)
+                                sleep(0.001)
                 except Exception as e:
                     print(e)
                     print("临时写的脚本, 可能出了点问题!!!")
 
-            sleep(0.1)
+            sleep(0.05)
         if submit_succ:
+            print("完成时间：")
+            print(str(datetime.now()))
             if self.password:
                 self.pay()
 

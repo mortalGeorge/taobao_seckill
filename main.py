@@ -11,7 +11,9 @@ def run_killer(txt, txt2):
     seckill_time = txt.get()
     password = str(txt2.get())
     print(seckill_time, password)
-    ChromeDrive(seckill_time = seckill_time, password = password).sec_kill()
+    cd = ChromeDrive(seckill_time = seckill_time, password = password)
+    cd.keep_wait()
+    cd.sec_kill()
 
 
 
@@ -38,7 +40,7 @@ def main():
     txt2.grid(column = 1, row = 1)
 
     b1 = Button(win, text = '开始', command = lambda: run_killer(txt, txt2))
-    b1.config(font = 'Helvetica -10 bold', bg = 'red', relief = 'sunken', width = 8, height = 6)
+    b1.config(font = 'Helvetica -10 bold', bg = 'white', relief = 'sunken', width = 8, height = 6)
     b1.place(x=300, y=5)
     win.resizable(width = False, height = False)
 

@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d818cb7d-01cf-45fa-87b7-9596a352a299" name="Default Changelist" comment="">
+    <list default="true" id="d818cb7d-01cf-45fa-87b7-9596a352a299" name="Default Changelist" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/seckill_taobao.py" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/seckill_taobao.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +195,14 @@
       <workItem from="1611216648108" duration="2827000" />
       <workItem from="1611385025068" duration="7869000" />
     </task>
+    <task id="LOCAL-00001" summary="1">
+      <created>1640191324599</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1640191324599</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -240,6 +247,21 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
