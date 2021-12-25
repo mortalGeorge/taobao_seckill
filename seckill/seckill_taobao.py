@@ -149,16 +149,16 @@ class ChromeDrive:
                     break
 
                 retry_count += 1
-
-                if retry_count > 1:
-                    self.driver.get("https://cart.taobao.com/cart.htm")
-                    sleep(0.01)
-                    if self.driver.find_element_by_id("J_SelectAll1"):
-                        self.driver.find_element_by_id("J_SelectAll1").click()
+                #
+                # if retry_count > 1:
+                #     self.driver.get("https://cart.taobao.com/cart.htm")
+                #     sleep(0.01)
+                #     if self.driver.find_element_by_id("J_SelectAll1"):
+                #         self.driver.find_element_by_id("J_SelectAll1").click()
                         # print("已经选中全部商品！！！")
 
                 try:
-                    sleep(0.001)
+                    sleep(0.01)
                     if self.driver.find_element_by_id("J_Go"):
                         self.driver.find_element_by_id("J_Go").click()
                         print("已经点击结算按钮...")
@@ -166,7 +166,7 @@ class ChromeDrive:
                         sleep(0.01)
                         while True:
                             try:
-                                if click_submit_times < 30:
+                                if click_submit_times < 100:
                                     self.driver.find_element_by_link_text('提交订单').click()
                                     print("已经点击提交订单按钮")
                                     submit_succ = True
@@ -176,18 +176,32 @@ class ChromeDrive:
                                     break
                             except Exception as e:
                                 print("没发现提交按钮, 页面未加载, 重试...")
-                                if self.driver.find_element_by_id("J_Go"):
-                                    self.driver.find_element_by_id("J_Go").click()
                                 click_submit_times = click_submit_times + 1
-                                sleep(0.001)
+                                # sleep(10000)
+                                try:
+                                    self.driver.find_element_by_link_text('我的购物车').click()
+                                    sleep(0.01)
+                                    if self.driver.find_element_by_id("J_SelectAll1"):
+                                        self.driver.find_element_by_id("J_SelectAll1").click()
+                                        print("已经选中全部商品！！！")
+                                        break
+                                except Exception as e:
+                                    print("不能返回购物车")
+                                try:
+                                    self.driver.find_element_by_id("J_Go").click()
+                                except Exception as e:
+                                    print("不能结算")
+
+                                sleep(0.01)
                 except Exception as e:
                     print(e)
                     print("临时写的脚本, 可能出了点问题!!!")
 
-            sleep(0.05)
+            sleep(0.01)
         if submit_succ:
             print("完成时间：")
             print(str(datetime.now()))
+            # sleep(10000)
             if self.password:
                 self.pay()
 
